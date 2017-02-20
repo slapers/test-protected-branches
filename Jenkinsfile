@@ -14,7 +14,7 @@ node {
 
   stage('Test image') {
     image.inside() {
-      sh "ng test --watch=false --reporter=progress,junit"
+      sh "cd /site && ng test --watch=false --reporter=progress,junit"
     }
   }
 
