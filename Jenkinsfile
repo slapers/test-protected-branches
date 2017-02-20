@@ -1,6 +1,6 @@
 def image
 def imageName="slapers/tpb"
-def imageTag="${env.BRANCH_NAME}-${env.BUILD_ID}"
+def imageTag="${env.BUILD_ID}"
 
 node {
 
