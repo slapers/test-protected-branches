@@ -34,9 +34,9 @@ node {
       }
     }
 
-    stage('Run e2e tests') {
-      sh "./node_modules/.bin/ng e2e"
-    }
+//    stage('Run e2e tests') {
+//      sh "./node_modules/.bin/ng e2e"
+//    }
 
     stage('Build dist artifact') {
       sh "./node_modules/.bin/ng build"
