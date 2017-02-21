@@ -15,14 +15,12 @@ node {
   stage('Run unit tests') {
     try {
       image.inside() {
-        sh "cd /site && ng test --watch=false --reporter=progress,junit"
+        sh "cp -r /npm_cache/node_modules node_modules"
+        sh "ng test --watch=false --reporter=progress,junit"
       }
     }
-    catch (err) {
-      throw err
-    }
     finally {
-      step([$class: 'JUnitResultArchiver', testResults: '/site/test-results.xml'])
+      step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
     }
   }
 
