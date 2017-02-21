@@ -22,7 +22,7 @@ node {
 
       stage('Run unittests') {
         try {
-          sh "npm run ng test --watch=false --reporter=progress,junit"
+          sh "./node_modules/.bin/ng test --watch=false --reporter=progress,junit"
         }
         finally {
           step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
