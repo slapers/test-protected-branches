@@ -15,29 +15,24 @@ node {
     image = docker.build "${imageName}:${imageTag}", '--pull .'
   }
 
-
   image.inside() {
 
     stage('Link npm cache') {
       sh "ln -s /npm_cache/node_modules node_modules"
     }
 
-    parallel [
+    stage('Run linting') {
+      sh "./node_modules/.bin/ng lint"
+    }
 
-      stage('Run linting') {
-        sh "./node_modules/.bin/ng lint"
-      },
-
-      stage('Run unittests') {
-        try {
-          sh "./node_modules/.bin/ng test --watch=false --reporter=progress,junit"
-        }
-        finally {
-          step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
-        }
+    stage('Run unittests') {
+      try {
+        sh "./node_modules/.bin/ng test --watch=false --reporter=progress,junit"
       }
-    ]
-
+      finally {
+        step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
+      }
+    }
   }
 }
 
