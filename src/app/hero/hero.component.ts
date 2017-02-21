@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'toh-hero',
+    selector: 'sed-hero',
 })
 export class HeroComponent implements OnInit {
     constructor() { }
