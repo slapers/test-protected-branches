@@ -4,6 +4,9 @@ def imageTag = "${env.BUILD_ID}"
 
 node {
 
+  // Wipe the workspace so we are building completely clean
+  deleteDir()
+
   stage('Checkout') {
     checkout scm
   }
