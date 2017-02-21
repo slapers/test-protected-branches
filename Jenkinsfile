@@ -22,14 +22,22 @@ node {
       sh "ln -s /npm_cache/node_modules node_modules"
     }
 
-    stage('Run unittests') {
-      try {
-        sh "./node_modules/.bin/ng test --watch=false --reporter=progress,junit"
+    parallel [
+
+      stage('Run linting') {
+        sh "./node_modules/.bin/ng lint"
+      },
+
+      stage('Run unittests') {
+        try {
+          sh "./node_modules/.bin/ng test --watch=false --reporter=progress,junit"
+        }
+        finally {
+          step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
+        }
       }
-      finally {
-        step([$class: 'JUnitResultArchiver', testResults: 'test-results.xml'])
-      }
-    }
+    ]
+
   }
 }
 
