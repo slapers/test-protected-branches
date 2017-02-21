@@ -17,8 +17,8 @@ node {
 
   image.inside() {
 
-    stage('Link npm cache') {
-      sh "ln -s /npm_cache/node_modules node_modules"
+    stage('copy npm cache') {
+      sh "cp -r /npm_cache/node_modules node_modules"
     }
 
     stage('Run linting') {
