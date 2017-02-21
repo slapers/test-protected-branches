@@ -13,7 +13,9 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
+// tslint:disable-next-line:no-any
 declare var __karma__: any;
+// tslint:disable-next-line:no-any
 declare var require: any;
 
 // Prevent Karma from running prematurely.

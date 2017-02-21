@@ -30,6 +30,7 @@
       "static-before-instance",
       "variables-before-functions"
     ],
+    "no-any": true,
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
@@ -98,8 +99,8 @@
       "check-type"
     ],
 
-    "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", "app", "kebab-case"],
+    "directive-selector": [true, "attribute", "sed", "camelCase"],
+    "component-selector": [true, "element", "sed", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
